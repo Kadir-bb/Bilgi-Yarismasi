@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilgi Yarışması Oyunu</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="img/ufo.png" alt="Logo"> <span>GalaQuiz</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#">Kategoriler</a></li>
+            <li><a href="#">Nasıl Oynanır?</a></li>
+            <li><a href="#">Puan Tablosu</a></li>
+            <li><a href="#">Hakkımızda</a></li>
+        </ul>
+
+        <div class="nav-auth">
+            <a href="#" class="btn-login">Giriş Yap</a>
+            <a href="#" class="btn-register">Kayıt Ol</a>
+        </div>
+    </nav>
+
     <div class="stars"></div>
     <img src="img/ufo.png" class="ufo" alt="UFO">
     <img src="img/moon.svg" class="moon" alt="Ay">
-    
+
     <div id="particle-container"></div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

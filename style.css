@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  cursor: crosshair; /* İmleci hedef simgesi yapar, uzay temasına uygun */
+  transition: background 0.1s ease;
+}
+
+/* Daha Belirgin Yıldızlar */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent
+    url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none; /* Mouse ile etkileşime girmesin */
+  opacity: 0.8;
+  z-index: 5;
+}
+
+/* Hareketli UFO */
+.ufo {
+  position: absolute;
+  width: 100px;
+  top: 15%;
+  left: 10%;
+  z-index: 2;
+  filter: drop-shadow(0 0 15px #00d4ff);
+  animation: ufo-float 5s ease-in-out infinite;
+}
+
+@keyframes ufo-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(-5deg);
+  }
+}
+
+/* Parlayan Ay */
+.moon {
+  position: absolute;
+  width: 150px;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+  opacity: 0.9;
+}
+
+/* Quiz Kutusu (Daha Şık) */
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 30px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 450px;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Soru ve Buton Güzelleştirme */
+#question {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+button {
+  background: rgba(0, 212, 255, 0.2);
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #00d4ff;
+  color: #090a0f;
+  box-shadow: 0 0 20px #00d4ff;
+}

@@ -1,3 +1,6 @@
+/* Google Fonts'tan uzay temasına uygun fontları çekiyoruz */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -9,10 +12,15 @@ body {
   font-family: "Poppins", sans-serif;
   color: white;
   overflow: hidden;
-  /* Başlangıç arka planı */
   background: #090a0f;
-  cursor: url("img/cursor.cur"), auto;
+  /* İmleci tüm sayfada zorunlu kılıyoruz */
+  cursor: url("img/cursor.cur"), auto !important;
   transition: background 0.1s ease;
+}
+
+/* Navbardaki menülerde ve tüm linklerde imlecin varsayılan olmasını engelliyoruz */
+a, button, .nav-links li, .nav-logo {
+    cursor: inherit !important;
 }
 
 .stars {
@@ -21,16 +29,15 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Görselin klasörde 'stardust.png' olduğundan emin ol */
   background: transparent url("img/stardust.png") repeat;
   z-index: 0;
   opacity: 0.6;
-  pointer-events: none; /* Yıldızlar tıklamayı engellemesin */
+  pointer-events: none;
 }
 
 .particle {
     position: absolute;
-    background: #3fbec7; 
+    background: #3fbec7; /* Kırmızımsı partikül rengi */
     border-radius: 50%;
     pointer-events: none;
     opacity: 0.8;
@@ -49,11 +56,10 @@ body {
   pointer-events: none;
 }
 
-/* 1. Ay Resminin Konumunu Düzeltme */
 .moon {
   position: absolute;
   width: 150px;
-  top: 100px; /* Nav çubuğunun (genelde 70-80px) altına inmesi için artırıldı */
+  top: 110px; /* Navın biraz daha altında durması için */
   right: 50px;
   z-index: 1;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
@@ -62,31 +68,25 @@ body {
 }
 
 @keyframes ufo-float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(5deg);
-  }
-  50% {
-    transform: translateY(-40px) rotate(-5deg);
-  }
+  0%, 100% { transform: translateY(0) rotate(5deg); }
+  50% { transform: translateY(-40px) rotate(-5deg); }
 }
 
 /* --- Navbar Tasarımı --- */
 .navbar {
-  position: fixed; /* Sayfanın üstünde sabit durmasını sağlar */
+  position: fixed;
   top: 0;
   left: 0;
-  padding: 0 5%;
-  height: 80px; /* Sabit yükseklik verdik */
   width: 100%;
   display: flex;
-  justify-content: space-between; /* Logo sola, linkler sağa */
+  justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
-  background: rgba(255, 255, 255, 0.05); /* Çok hafif şeffaf beyaz */
-  backdrop-filter: blur(15px); /* Cam efekti */
+  padding: 0 5%;
+  min-height: 80px; /* Sabit height yerine min-height daha güvenlidir */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1000; /* Her şeyin üstünde görünmesi için yüksek değer */
+  z-index: 1000;
   box-sizing: border-box;
 }
 
@@ -94,38 +94,35 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-family: 'Orbitron', sans-serif; /* Teknoloji/Uzay fontu */
   font-weight: bold;
-  font-size: 1.5rem;
-  letter-spacing: 2px;
-  color: #00d4ff; /* Temamıza uygun neon mavi */
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  color: #00d4ff;
   text-transform: uppercase;
 }
 
 .nav-logo img {
-  width: 40px; /* Logo boyutundaki UFO */
-}
-
-.nav-auth {
-  display: flex;
-  gap: 15px;
-  align-items: center;
+  width: 40px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   gap: 25px;
-  margin-right: auto; /* Bu satır menüyü logonun yanına yaklaştırır */
-  margin-left: 50px; /* Logodan biraz uzaklaştırır */
+  margin-right: auto;
+  margin-left: 50px;
 }
 
 .nav-links li a {
-  text-decoration: none; /* Alt çizgiyi kaldırır */
+  text-decoration: none;
   color: white;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 1px;
   transition: 0.4s;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .nav-links li a:hover {
@@ -134,27 +131,37 @@ body {
   text-shadow: 0 0 10px #00d4ff;
 }
 
+.nav-auth {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
 .btn-login {
     text-decoration: none;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-family: 'Poppins', sans-serif;
     transition: 0.3s;
+    opacity: 0.8;
 }
 
 .btn-register {
     text-decoration: none;
     background: #00d4ff;
     color: #090a0f;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: 0.3s;
+    padding: 10px 22px;
+    border-radius: 5px; /* Daha modern, hafif keskin köşe */
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.4s;
     box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .btn-register:hover {
-    background: #ff2e63; /* Kayıt ol butonu üzerine gelince kırmızımsı bir ton */
-    color: white;
-    box-shadow: 0 0 15px #ff2e63;
+    background: #14213d; /* İstediğin lacivert tonu */
+    color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    border: 1px solid #00d4ff; /* Hoverda belirginlik için ince kenarlık */
 }

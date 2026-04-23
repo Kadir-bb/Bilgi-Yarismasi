@@ -1,5 +1,5 @@
-/* Google Fonts'tan uzay temasına uygun fontları çekiyoruz */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap');
+/* Google Fonts - Temamız için gerekli olanlar */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 body {
   margin: 0;
@@ -13,14 +13,18 @@ body {
   color: white;
   overflow: hidden;
   background: #090a0f;
-  /* İmleci tüm sayfada zorunlu kılıyoruz */
   cursor: url("img/cursor.cur"), auto !important;
   transition: background 0.1s ease;
 }
 
-/* Navbardaki menülerde ve tüm linklerde imlecin varsayılan olmasını engelliyoruz */
-a, button, .nav-links li, .nav-logo {
-    cursor: inherit !important;
+/* Tüm tıklanabilir öğelerde özel imleci koru */
+a,
+button,
+.nav-links li,
+.nav-logo,
+.cta-btn,
+.side-panel {
+  cursor: inherit !important;
 }
 
 .stars {
@@ -35,44 +39,17 @@ a, button, .nav-links li, .nav-logo {
   pointer-events: none;
 }
 
-.particle {
-    position: absolute;
-    background: #3fbec7; /* Kırmızımsı partikül rengi */
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0.8;
-    z-index: 10;
-    box-shadow: 0 0 5px #3fbec7; 
-}
-
-.ufo {
-  position: absolute;
-  width: 120px;
-  top: 20%;
-  left: 10%;
-  z-index: 2;
-  filter: drop-shadow(0 0 15px #00d4ff);
-  animation: ufo-float 5s ease-in-out infinite;
-  pointer-events: none;
-}
-
 .moon {
-  position: absolute;
-  width: 150px;
-  top: 110px; /* Navın biraz daha altında durması için */
-  right: 50px;
-  z-index: 1;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+  position: fixed; /* Sayfada sabit kalması için */
+  top: 100px; /* Sağ üst köşe mesafesi */
+  right: 25px;
+  width: 150px; /* Boyutu buradan ayarlayabilirsin */
+  z-index: 500; /* Navbar'ın z-index değerinden (1000) düşük olmalı */
+  pointer-events: none; /* Üzerine tıklandığında alttaki öğeleri engellemez */
   opacity: 0.9;
-  pointer-events: none;
 }
 
-@keyframes ufo-float {
-  0%, 100% { transform: translateY(0) rotate(5deg); }
-  50% { transform: translateY(-40px) rotate(-5deg); }
-}
-
-/* --- Navbar Tasarımı --- */
+/* --- NAVBAR TASARIMI (Düzeltildi) --- */
 .navbar {
   position: fixed;
   top: 0;
@@ -81,8 +58,7 @@ a, button, .nav-links li, .nav-logo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5%;
-  min-height: 80px; /* Sabit height yerine min-height daha güvenlidir */
+  padding: 1rem 5%;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -93,10 +69,10 @@ a, button, .nav-links li, .nav-logo {
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: 'Orbitron', sans-serif; /* Teknoloji/Uzay fontu */
+  gap: 12px;
+  font-family: "Orbitron", sans-serif; /* Orijinal Font */
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   letter-spacing: 3px;
   color: #00d4ff;
   text-transform: uppercase;
@@ -109,59 +85,199 @@ a, button, .nav-links li, .nav-logo {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 25px;
-  margin-right: auto;
-  margin-left: 50px;
+  gap: 30px;
+  margin: 0 auto 0 50px;
 }
 
 .nav-links li a {
   text-decoration: none;
   color: white;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 1px;
-  transition: 0.4s;
-  opacity: 0.7;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  opacity: 0.8;
 }
 
 .nav-links li a:hover {
   color: #00d4ff;
   opacity: 1;
-  text-shadow: 0 0 10px #00d4ff;
+  text-shadow: 0 0 8px #00d4ff;
 }
 
+/* --- Nav Butonları ve Efektleri (Geri Getirildi) --- */
 .nav-auth {
   display: flex;
   gap: 20px;
-  align-items: center;
 }
 
 .btn-login {
-    text-decoration: none;
-    color: white;
-    font-size: 0.85rem;
-    font-family: 'Poppins', sans-serif;
-    transition: 0.3s;
-    opacity: 0.8;
+  text-decoration: none;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  transition: 0.4s;
+}
+
+.btn-login:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: #00d4ff;
+  color: #00d4ff;
 }
 
 .btn-register {
-    text-decoration: none;
-    background: #00d4ff;
-    color: #090a0f;
-    padding: 10px 22px;
-    border-radius: 5px; /* Daha modern, hafif keskin köşe */
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-family: 'Orbitron', sans-serif;
-    transition: 0.4s;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+  text-decoration: none;
+  background: #00d4ff;
+  color: #090a0f;
+  padding: 10px 22px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: "Orbitron", sans-serif;
+  transition: 0.4s;
 }
 
 .btn-register:hover {
-    background: #14213d; /* İstediğin lacivert tonu */
-    color: #00d4ff;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-    border: 1px solid #00d4ff; /* Hoverda belirginlik için ince kenarlık */
+  background: #14213d;
+  color: #00d4ff;
+  box-shadow: 0 0 20px #00d4ff;
+  transform: translateY(-2px);
+}
+
+/* --- Hero Section & Karşılama Kartı (Renkler Düzenlendi) --- */
+.welcome-section {
+  z-index: 5;
+  text-align: center;
+}
+
+.welcome-card {
+  /* 1. DERİNLİK KATAN GRADYAN ARKA PLAN */
+  /* Koyu lacivertten, çok şeffaf bir maviye doğru çapraz geçiş */
+  background: linear-gradient(
+    135deg,
+    rgba(20, 33, 61, 0.5) 0%,
+    rgba(9, 10, 15, 0.8) 100%
+  );
+
+  /* 2. CAM EFEKTİ (BLUR) */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari desteği için */
+
+  /* 3. NEON KENARLIK EFEKTİ */
+  /* Kenarlara çok hafif bir parlama ekleyerek kartı ön plana çıkarır */
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-top: 1px solid rgba(0, 212, 255, 0.4); /* Üstten ışık vurma efekti */
+  border-left: 1px solid rgba(0, 212, 255, 0.4);
+
+  /* 4. DIŞ GÖLGE (SHADOW) */
+  /* Kartın arkasında çok hafif bir mavi hare oluşturur */
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(0, 212, 255, 0.1);
+
+  /* 5. YERLEŞİM AYARLARI */
+  padding: 50px;
+  border-radius: 30px;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.welcome-card h1 {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 550;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  color: #00d4ff; /* Mavi renk yapıldı */
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.welcome-card p {
+  font-weight: 300;
+  color: #ffffff; /* Tam beyaz ve daha canlı yapıldı */
+  line-height: 1.6;
+  margin-bottom: 30px;
+  opacity: 0.9; /* Görünürlük tam yapıldı */
+}
+
+/* --- Karşılama Kartı İstatistikleri --- */
+.welcome-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* İki öğe arasındaki boşluk */
+  margin-bottom: 30px; /* Butonla arasındaki boşluk */
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 550;
+  font-size: 1.6rem;
+  color: #00d4ff; /* Mavi renk */
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 550;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #00ff80;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+.cta-btn {
+  background: #00d4ff;
+  color: #090a0f;
+  border: none;
+  padding: 15px 40px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: 0.4s;
+}
+
+.cta-btn:hover {
+  background: #14213d; /* Arka plan koyulaşsın */
+  color: #00d4ff; /* Yazı maviye dönsün */
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); /* Sert beyaz yerine yumuşak mavi parıltı */
+  transform: translateY(-3px); /* Hafif yukarı kalkma efekti */
+}
+
+/* Yan Panel ve Diğer Elementler */
+.ufo {
+  position: absolute;
+  width: 120px;
+  top: 20%;
+  left: 10%;
+  filter: drop-shadow(0 0 15px #00d4ff);
+  animation: ufo-float 5s ease-in-out infinite;
+}
+
+@keyframes ufo-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(-5deg);
+  }
+}
+
+.particle {
+  position: absolute;
+  background: #00d4ff;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 10;
 }

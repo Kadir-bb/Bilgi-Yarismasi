@@ -1,16 +1,14 @@
 const body = document.querySelector("body");
 const particleContainer = document.getElementById("particle-container");
 
-// Arka plan ışığını ve partikülleri tetikleyen ana olay
 window.addEventListener("mousemove", (e) => {
   const x = e.clientX;
   const y = e.clientY;
 
-  // 1. MAVİ AYDINLATMA EFEKTİ
-  // Renkleri biraz daha belirginleştirdim
+  // Arka plan aydınlatma
   body.style.background = `radial-gradient(circle at ${x}px ${y}px, #14213d 0%, #090a0f 50%)`;
 
-  // 2. BEYAZ PARTİKÜL EFEKTİ
+  // Mavi partikül oluşturma
   createParticle(x, y);
 });
 
@@ -21,7 +19,6 @@ function createParticle(x, y) {
   const size = Math.random() * 4 + "px";
   particle.style.width = size;
   particle.style.height = size;
-
   particle.style.left = x + "px";
   particle.style.top = y + "px";
 
@@ -32,13 +29,13 @@ function createParticle(x, y) {
 
   const animation = particle.animate(
     [
-      { transform: `translate(0, 0)`, opacity: 1 },
-      { transform: `translate(${destinationX}px, ${destinationY}px)`, opacity: 0 },
+      { transform: "translate(0, 0)", opacity: 0.8 },
+      {
+        transform: `translate(${destinationX}px, ${destinationY}px)`,
+        opacity: 0,
+      },
     ],
-    {
-      duration: 800 + Math.random() * 600,
-      easing: "ease-out",
-    }
+    { duration: 1000, easing: "ease-out" },
   );
 
   animation.onfinish = () => particle.remove();
